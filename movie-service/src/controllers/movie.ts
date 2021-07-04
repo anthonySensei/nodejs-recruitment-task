@@ -47,7 +47,7 @@ export const createMovie = async (req: Request, res: Response) => {
     return res.status(500).send({ message: `Error occurred: ${err.message}` });
   }
 
-  if (!movie) {
+  if (!movie || !movie?.title) {
     return res.status(404).send({ message: `Cannot find movie with this title: ${title}` });
   }
 
