@@ -23,3 +23,6 @@ app.listen(port, async () => {
         console.error(`Error connecting to mongoDb: ${err.message}`);
     }
 });
+
+
+export default app;

@@ -60,7 +60,7 @@ export const checkPackage =  async (req: Request, res: Response, next: NextFunct
       const totalBooksPerMonth = await Movie.countDocuments(filter);
 
       if (totalBooksPerMonth > 4) {
-        return res.status(401).send({ message: `Your limit is over` });
+        return res.status(403).send({ message: `Your limit is over` });
       }
     } catch (err) {
       console.error(`Error counting books: ${err.message}`);
