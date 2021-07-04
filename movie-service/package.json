@@ -1,0 +1,30 @@
+{
+  "name": "movie-service",
+  "version": "0.0.0",
+  "private": true,
+  "main": "src/server.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "start": "node dist/server.js"
+  },
+  "dependencies": {
+    "@types/express": "^4.17.12",
+    "@types/jsonwebtoken": "^8.5.3",
+    "@types/morgan": "^1.9.2",
+    "@types/node": "^15.12.5",
+    "axios": "^0.21.1",
+    "cookie-parser": "~1.4.4",
+    "express": "~4.16.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.13.0",
+    "morgan": "~1.9.1",
+    "ts-node": "9.1.1",
+    "typescript": "^3.9.10"
+  },
+  "author": "Anthony",
+  "license": "ISC",
+  "devDependencies": {
+    "tslint": "^6.1.3"
+  }
+}
