@@ -4,7 +4,7 @@
   "private": true,
   "main": "src/server.ts",
   "scripts": {
-    "test": "NODE_ENV=local JWT_SECRET=secret OMDB_API_KEY=3d4d002f nyc mocha --timeout 40000 --exit dist/test/*.test.js",
+    "test": "NODE_ENV=test nyc mocha --timeout 40000 --exit dist/test/*.test.js",
     "dev-test": "NODE_ENV=local JWT_SECRET=secret OMDB_API_KEY=3d4d002f nyc mocha --timeout 40000 --exit --require ts-node/register src/test/*.test.ts",
     "build": "tsc",
     "start": "node dist/server.js"

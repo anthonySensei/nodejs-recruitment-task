@@ -20,13 +20,13 @@ describe('Movie Controller', () => {
   before(() => Movie.deleteMany({}));
 
   describe('GET /api/v0/movies', () => {
-    it('should return user movies. Should be equal 3', async  () => {
+    it('should return user movies. Should be equal 1', async  () => {
       await Promise.all([
-        ...Array.from({length: 3}, (_, i) => createMovie(moviesList[i], basicToken)),
+        createMovie('Marvel', basicToken),
         createMovie('Marvel', premiumToken),
       ]);
       const res = await getMovie(basicToken);
-      expect(res.body.movies?.length).to.be.equal(3);
+      expect(res.body.movies?.length).to.be.equal(1);
     });
   });
 
