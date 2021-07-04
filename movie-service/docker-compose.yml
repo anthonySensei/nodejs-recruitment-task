@@ -6,7 +6,8 @@ services:
     volumes:
       - ./src:/app/src
     ports:
-      - "3001:3001"
+      - published: ${APP_PORT:-3001}
+        target: 3001
     links:
       - mongo
     environment:

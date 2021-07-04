@@ -3,8 +3,13 @@ services:
   movie-service:
     container_name: recruitment-task_movie-service
     restart: always
-    build: movie-service
+    build:
+      context: movie-service
+      dockerfile: Dockerfile
     image: recruitment-task/movie-service
+    ports:
+      - published: ${MOVIE_SVC_PORT:-3001}
+        target: 3001
     links:
       - mongo
     environment:
@@ -16,6 +21,9 @@ services:
       context: auth-service
       dockerfile: Dockerfile
     image: recruitment-task/auth-service
+    ports:
+      - published: ${AUTH_SVC_PORT:-3000}
+        target: 3000
     environment:
       JWT_SECRET: ${JWT_SECRET}
   mongo:
