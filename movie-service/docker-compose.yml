@@ -1,12 +1,21 @@
 version: '3.7'
 services:
   app:
+    restart: always
     build: .
     volumes:
       - ./src:/app/src
     ports:
       - "3001:3001"
+    links:
+      - mongo
     environment:
       JWT_SECRET: ${JWT_SECRET}
       OMDB_API_KEY: ${OMDB_API_KEY}
-      MONGO_URI: ${MONGO_URI}
+  mongo:
+    container_name: mongo
+    image: mongo
+    volumes:
+      - ./data:/data/db
+    ports:
+      - "27017:27017"

@@ -1,6 +1,6 @@
 import { connect } from 'mongoose';
 
-export default () => connect(process.env.MONGO_URI as string, {
+export default () => connect('mongodb://mongo:27017', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useFindAndModify: false,
