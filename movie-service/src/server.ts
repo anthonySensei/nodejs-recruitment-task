@@ -9,8 +9,7 @@ import cors from './config/cors';
 import router from './routes/index';
 
 const app = express();
-const { APP_PORT, MOVIE_SVC_PORT } = process.env;
-const port = APP_PORT || MOVIE_SVC_PORT || 3001;
+const port = 3001;
 
 app.use(logger('dev'));
 app.use(express.json());
