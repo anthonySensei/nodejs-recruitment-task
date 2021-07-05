@@ -37,7 +37,7 @@ export const createMovie = async (req: Request, res: Response) => {
   }
 
   try {
-    const isMovieAlreadyAdded = !!(await Movie.findOne({ title: movie.title }));
+    const isMovieAlreadyAdded = !!(await Movie.findOne({ title: movie.title, userId: user.userId }));
 
     if (isMovieAlreadyAdded) {
       return res.status(409).send({ message: `You have already added movie with title '${movie.title}'` });
