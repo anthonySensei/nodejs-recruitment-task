@@ -43,10 +43,10 @@ describe('Movie Controller', () => {
       expect(res.status).to.be.equal(400);
     });
 
-    it('should return 400 and error message if movie with this title has been already added',  async () => {
+    it('should return 409 and error message if movie with this title has been already added',  async () => {
       await createMovie('Marvel', basicToken);
       const res = await createMovie('Marvel', basicToken);
-      expect(res.status).to.be.equal(400);
+      expect(res.status).to.be.equal(409);
     });
 
     it('should return 404 and error message if movie was not found', async () => {
