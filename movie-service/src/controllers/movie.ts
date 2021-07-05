@@ -40,7 +40,7 @@ export const createMovie = async (req: Request, res: Response) => {
     const isMovieAlreadyAdded = !!(await Movie.findOne({ title: movie.title }));
 
     if (isMovieAlreadyAdded) {
-      return res.status(400).send({ message: `You have already added movie with title '${movie.title}'` });
+      return res.status(409).send({ message: `You have already added movie with title '${movie.title}'` });
     }
   } catch (err) {
     console.error(`Error finding movie: ${err.message}`);
