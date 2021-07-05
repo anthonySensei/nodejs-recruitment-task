@@ -13,25 +13,25 @@ jobs:
   Test:
     runs-on: ubuntu-latest
     steps:
-      - name: Check Out Repo 
+      - name: Check Out Repo
         uses: actions/checkout@v2
 
       - name: Run Tests
         run: MOVIE_SVC_PORT=8080 AUTH_SVC_PORT=8081 JWT_SECRET=${{secrets.JWT_SECRET}} OMDB_API_KEY=${{secrets.OMDB_API_KEY}} docker-compose run --rm movie-service npm test
-  
+
   Deploy:
     needs: Test
     runs-on: ubuntu-latest
     steps:
-      - name: Check Out Repo 
+      - name: Check Out Repo
         uses: actions/checkout@v2
-        
+
       - name: Login to Docker Hub
         uses: docker/login-action@v1
         with:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
-          password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}  
-          
+          password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+
       - name: Build and push
         id: docker_build
         uses: docker/build-push-action@v2
@@ -40,9 +40,9 @@ jobs:
           OMDB_API_KEY: ${{ secrets.OMDB_API_KEY }}
         with:
           context: ./movie-service
-          file: ./Dockerfile
+          file: ./movie-service/Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/simplewhale:latest
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/movie-api:latest
 
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
