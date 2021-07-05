@@ -19,7 +19,7 @@ app.use('/api/v0/', router);
 app.use('/api/v0/api-docs', swaggerUi.serve, swaggerUi.setup(swagger));
 
 app.listen(port, async () => {
-    console.log(`Movie service is listening on ${port}`);
+    console.log(`Movie SERVICE is listening on ${port}`);
 
     try {
         await connectToMongoDB();
